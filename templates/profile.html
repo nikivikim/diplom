@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Профиль</h1>
+User: {{ user }}
+{{user.email}}
+{{user.first_name}}
+{{user.last_name}}
+<form action="{% url 'logout' %}" method="post">
+
+    {% csrf_token %}
+
+    <button type="submit">Log out</button>
+
+</form>
+{% for indicator_value in indicator_values %}
+    <p>{{ indicator_value.indicator.name }}: {{ indicator_value.value }}</p>
+{% endfor %}
+
+{% endblock %}
